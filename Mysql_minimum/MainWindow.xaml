@@ -16,6 +16,16 @@
         <Label Content="Jelszó" HorizontalAlignment="Left" Margin="73,121,0,0" VerticalAlignment="Top"/>
         <PasswordBox x:Name="txtJelszo" HorizontalAlignment="Left" Margin="143,125,0,0" VerticalAlignment="Top" Width="120"/>
         <Button Content="Belépés" HorizontalAlignment="Left" Margin="155,178,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <TextBox x:Name="txtNevReg" HorizontalAlignment="Left" Margin="166,86,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <Label Content="Név" HorizontalAlignment="Left" Margin="96,82,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Jelszó" HorizontalAlignment="Left" Margin="96,126,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <PasswordBox x:Name="txtJelszoReg1" HorizontalAlignment="Left" Margin="166,130,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <Button Content="Regisztráció" HorizontalAlignment="Center" Margin="0,245,0,0" VerticalAlignment="Top" Grid.Column="1" Click="Button_Click_1"/>
+        <Label Content="Belépés" HorizontalAlignment="Left" Margin="162,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Regisztráció" HorizontalAlignment="Left" Margin="178,18,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label Content="Jelszó" HorizontalAlignment="Left" Margin="96,174,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <PasswordBox x:Name="txtJelszoReg2" HorizontalAlignment="Left" Margin="166,178,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <Label x:Name="lbDebug" Grid.Column="1" Content="Label" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

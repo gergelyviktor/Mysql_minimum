@@ -40,9 +40,10 @@ namespace Mysql_minimum {
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
+            // login
             megnyit();
-            // le kell kérdezni, hogy  az beírt névvel és jelszóval létezik-e user
-            var sql = $"select * from user where nev = '{txtNev.Text}' and jelszo = '{txtJelszo.Password}'";
+            // le kell kérdezni, hogy a beírt névvel és jelszóval létezik-e user
+            var sql = $"select * from user where nev = '{txtNev.Text}' and jelszo = md5('{txtJelszo.Password}')";
             var lekerdezes = new MySqlCommand(sql, kapcs).ExecuteReader();
             if (lekerdezes.Read()) {
                 MessageBox.Show("sikeres bejelentkezés");
@@ -50,8 +51,35 @@ namespace Mysql_minimum {
             else {
                 MessageBox.Show("sikertelen bejelentkezés");
             }
+            //lekerdezes.Close();
             lezar();
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e) {
+            // reg
+            megnyit();
+            // le kell kérdezni, hogy a beírt névvel létezik-e user
+            var sql = $"select * from user where nev = '{txtNevReg.Text}'";
+            var lekerdezes = new MySqlCommand(sql, kapcs).ExecuteReader();
+            if (lekerdezes.Read()) {
+                MessageBox.Show("Már van ilyen user!");
+            }
+            else {
+                lekerdezes.Close();
+                // nincs ilyen user, mehet a regisztráció
+                // 1. megegyezik-e a két jelszó
+                if (txtJelszoReg1.Password == txtJelszoReg2.Password) {
+                    // 2. regisztráció
+                    sql = $"insert into user (nev, jelszo) values ('{txtNevReg.Text}', MD5('{txtJelszoReg1.Password}'))";
+                    lbDebug.Content = sql;
+                    new MySqlCommand(sql, kapcs).ExecuteNonQuery();
+                    MessageBox.Show("Sikeres regisztráció");
+                }
+                else {
+                    MessageBox.Show("A két jelszó nem egyezik meg!");
+                }
+            }
+            lezar();
+        }
     }
 }
